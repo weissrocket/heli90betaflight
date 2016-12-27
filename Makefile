@@ -678,6 +678,10 @@ COMMON_SRC = \
             drivers/io.c \
             drivers/light_led.c \
             drivers/resource.c \
+            drivers/rx_cc2500.c \
+            drivers/rx_nrf24l01.c \
+            drivers/rx_spi.c \
+            drivers/rx_xn297.c \
             drivers/rcc.c \
             drivers/serial.c \
             drivers/serial_uart.c \
@@ -733,6 +737,7 @@ FC_SRC = \
             io/serial_4way.c \
             io/serial_4way_avrootloader.c \
             io/serial_4way_stk500v2.c \
+            rx/cc2500_frsky.c \
             rx/ibus.c \
             rx/jetiexbus.c \
             rx/msp.c \
