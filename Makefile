@@ -678,10 +678,6 @@ COMMON_SRC = \
             drivers/io.c \
             drivers/light_led.c \
             drivers/resource.c \
-            drivers/rx_cc2500.c \
-            drivers/rx_nrf24l01.c \
-            drivers/rx_spi.c \
-            drivers/rx_xn297.c \
             drivers/rcc.c \
             drivers/serial.c \
             drivers/serial_uart.c \
@@ -715,6 +711,7 @@ FC_SRC = \
             fc/fc_init.c \
             fc/controlrate_profile.c \
             drivers/gyro_sync.c \
+            drivers/rx_cc2500.c \
             drivers/rx_nrf24l01.c \
             drivers/rx_spi.c \
             drivers/rx_xn297.c \
