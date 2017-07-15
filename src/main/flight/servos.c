@@ -363,7 +363,7 @@ void writeServos(void)
         }
         break;
 
-    case MIXER_HELI90:
+    case MIXER_HELI_90_DEG:
         pwmWriteServo(servoIndex++, servo[SERVO_FLAPPERON_1]);
         pwmWriteServo(servoIndex++, servo[SERVO_FLAPPERON_2]);
         pwmWriteServo(servoIndex++, servo[SERVO_RUDDER]);
@@ -477,7 +477,7 @@ static void servoTable(void)
     case MIXER_DUALCOPTER:
     case MIXER_SINGLECOPTER:
     case MIXER_GIMBAL:
-    case MIXER_HELI90:
+    case MIXER_HELI_90_DEG:
         servoMixer();
         break;
 
