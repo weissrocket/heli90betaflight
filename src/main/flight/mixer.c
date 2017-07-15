@@ -279,6 +279,12 @@ static const motorMixer_t mixerQuadX1234[] = {
     { 1.0f,  1.0f,  1.0f,  1.0f },          // REAR_L
 };
 
+static const motorMixer_t mixerHeli90[] = {
+    { 1.0f,  0.0f,  0.0f, 0.0f },
+    //same as mixerSingleProp
+    //THROTTLE ROLL PITCH YAW
+};
+
 // Keep synced with mixerMode_e
 const mixer_t mixers[] = {
     // motors, use servo, motor mixer
@@ -298,7 +304,7 @@ const mixer_t mixers[] = {
     { 8, false, mixerOctoFlatX },      // MIXER_OCTOFLATX
     { 1, true,  mixerSingleProp },     // * MIXER_AIRPLANE
     { 0, true,  NULL },                // * MIXER_HELI_120_CCPM
-    { 0, true,  NULL },                // * MIXER_HELI_90_DEG
+    { 1, true,  mixerHeli90 },         // * MIXER_HELI_90_DEG
     { 4, false, mixerVtail4 },         // MIXER_VTAIL4
     { 6, false, mixerHex6H },          // MIXER_HEX6H
     { 0, true,  NULL },                // * MIXER_PPM_TO_SERVO
