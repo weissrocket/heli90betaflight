@@ -157,6 +157,16 @@ static const servoMixer_t servoMixerGimbal[] = {
     { SERVO_GIMBAL_ROLL, INPUT_GIMBAL_ROLL,  125, 0, 0, 100, 0 },
 };
 
+static const servoMixer_t servoMixerHeli90[] = {
+    { SERVO_FLAPPERON_1, INPUT_STABILIZED_ROLL,   100, 0, 0, 100, 0 },
+    { SERVO_FLAPPERON_1, INPUT_STABILIZED_PITCH,  100, 0, 0, 100, 0 },
+    { SERVO_FLAPPERON_2, INPUT_STABILIZED_ROLL,  -100, 0, 0, 100, 0 },
+    { SERVO_FLAPPERON_2, INPUT_STABILIZED_PITCH,  100, 0, 0, 100, 0 },
+    { SERVO_RUDDER,      INPUT_STABILIZED_YAW,    100, 0, 0, 100, 0 },
+    // mixer rule format servo, input, rate, speed, min, max, box
+    // same as servoMixerFlyingWing, plus yaw
+};
+
 const mixerRules_t servoMixers[] = {
     { 0, NULL },                // entry 0
     { COUNT_SERVO_RULES(servoMixerTri), servoMixerTri },       // MULTITYPE_TRI
@@ -174,7 +184,7 @@ const mixerRules_t servoMixers[] = {
     { 0, NULL },                // MULTITYPE_OCTOFLATX
     { COUNT_SERVO_RULES(servoMixerAirplane), servoMixerAirplane },  // * MULTITYPE_AIRPLANE
     { 0, NULL },                // * MULTITYPE_HELI_120_CCPM
-    { 0, NULL },                // * MULTITYPE_HELI_90_DEG
+    { COUNT_SERVO_RULES(servoMixerHeli90), servoMixerHeli90 },      // * MULTITYPE_HELI_90_DEG
     { 0, NULL },                // MULTITYPE_VTAIL4
     { 0, NULL },                // MULTITYPE_HEX6H
     { 0, NULL },                // * MULTITYPE_PPM_TO_SERVO
@@ -247,6 +257,10 @@ void servoConfigureOutput(void)
                 currentServoMixer[i] = servoMixers[currentMixerMode].rule[i];
         }
     }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Need to include heli90 in fixed wing category below???????????????????????????????????????????????
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // set flag that we're on something with wings
     if (currentMixerMode == MIXER_FLYING_WING ||
@@ -347,6 +361,12 @@ void writeServos(void)
         for (int i = SERVO_SINGLECOPTER_INDEX_MIN; i <= SERVO_SINGLECOPTER_INDEX_MAX; i++) {
             pwmWriteServo(servoIndex++, servo[i]);
         }
+        break;
+
+    case MIXER_HELI90:
+        pwmWriteServo(servoIndex++, servo[SERVO_FLAPPERON_1]);
+        pwmWriteServo(servoIndex++, servo[SERVO_FLAPPERON_2]);
+        pwmWriteServo(servoIndex++, servo[SERVO_RUDDER]);
         break;
 
     default:
@@ -457,6 +477,7 @@ static void servoTable(void)
     case MIXER_DUALCOPTER:
     case MIXER_SINGLECOPTER:
     case MIXER_GIMBAL:
+    case MIXER_HELI90:
         servoMixer();
         break;
 
