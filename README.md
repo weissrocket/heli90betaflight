@@ -1,3 +1,7 @@
+BETAFLIGHT CLONE --- ATTEMPT TO DEVELOP FIRMWARE FOR 4CH/90DEG HELICOPTERS
+
+SERVOS CURRENTLY PHYSICALLY SET UP IN "ELEVON" CONFIGURATION (SWASH ROTATED 45DEG)
+
 ![BetaFlight Notice, version 3.2 will be the last version of Betaflight to support STM32F1 based flight controllers, this includes NAZE, CC3D (original) and CJMCU like flight controllers](https://raw.githubusercontent.com/wiki/betaflight/betaflight/images/betaflight/bf3_2_notice.png)
 
 ![BetaFlight](https://raw.githubusercontent.com/wiki/betaflight/betaflight/images/betaflight/bf_logo.png)
